@@ -1,0 +1,287 @@
+body{
+    overflow-x: hidden;
+}
+nav{
+    background: linear-gradient(to bottom, #3e9641, #75c277, #7dbb7f);
+    position: fixed;
+    top:0;
+    left: 0;
+    transition: left 300ms ease-out;
+    height: 100vh;
+    width: min(18em, 100%);
+    z-index: 10;
+    box-sizing: border-box;
+}
+
+.show{
+    left:-100%;
+}
+
+nav > ul{
+    display: flex;
+    list-style-type:none;
+
+    width: 100%;
+    flex-direction: column;
+    gap:5px;
+}
+
+nav ul li.name-li{
+    font-family: "Lobster Two" , sans-serif !important;
+    font-weight: 500;
+    font-size: 50px;
+    text-decoration: none;
+    margin-top:1em;
+    margin-bottom: 1em;
+}
+
+nav > ul li:not(.name-li){
+    font-size: 14pt;
+    width: 60%;
+    box-sizing: border-box; /*hoverin taşması engellendi.*/
+    transition: background-color 0.3s;
+    padding: 12px;
+}
+
+nav li:not(.name-li):hover{
+    background-color: rgba(55, 177, 65, 0.9);
+}
+
+nav a{
+    text-decoration: none;
+    color:white;
+    margin-top: 5px;
+    font-family: "Electrolize", sans-serif;
+    font-weight:bold;
+}
+
+
+.info-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin-left: 18em;
+    gap:20px;
+}
+
+.info-div{
+    background:rgb(116, 205, 116);
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+    height: 300px;
+    color:white;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Dikey ortalama */
+    align-items: center;     /* Yatay ortalama */
+    text-align: center;      /* Metni ortala */
+}
+.info-div p{
+    font-weight: 510;
+    font-size: 16pt;
+}
+
+
+
+/* ANKET OLUŞTURMA FORMU START */
+.form-wrapper{
+    max-width: 60%;
+    padding: 40px 20px;
+    margin: 0 auto;
+    margin-left: 28%;
+    margin-top:4%;
+    border: 13px solid rgba(78, 193, 82, 0.8);
+    border-radius: 10px;                                
+    text-align: center;
+    box-sizing: border-box;
+}
+.olustur-form{
+    display: flex;
+    flex-direction: column;
+    gap:25px;
+}
+.olustur-form input,textarea,select{
+    width: 50%;
+    padding: 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 8px;
+    display: block;
+    margin: 0 auto;
+}
+
+button[name='btnAnket']{
+    padding: 10px;
+    font-size: 12pt;
+    width: 60%;
+    margin: 0 auto;
+    margin-top:25px;
+    background-color: rgb(127, 212, 255);
+    cursor: pointer;
+}
+
+button[name='btnAddSoru']{
+    padding: 5px;
+    width: 60%;
+    margin: 0 auto;
+    font-size: 12pt;
+    background-color: rgb(216, 154, 254);
+    cursor: pointer;
+}
+
+button[name='btnSoruIptal']{
+    padding: 10px;
+    border-radius: 10px;
+    border-color: red;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+/* ANKET OLUŞTURMA FORMU END */
+
+
+
+
+
+/* Uyarı mesajları */
+.alert {
+    padding: 15px;
+    margin: 10px auto;
+    width: 50%;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.alert-error {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.alert-info {
+    color: #0c5460;
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+}
+.close-btn {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    line-height: 20px;
+    cursor: pointer;
+    color: #000;
+    opacity: 0.5;
+}
+.close-btn:hover {
+    opacity: 0.8;
+}
+
+
+/*
+myanket cardları
+*/
+.myankets{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap:20px;
+}
+.myanket{
+    border: solid 1px gray;
+    border-radius: 20px;
+    text-align: center;
+    padding: 20px;
+}
+.myanket p{
+    text-transform: capitalize;
+}
+.myanket input[type='submit']{
+    width: 150px;
+    padding: 5px;
+    border-radius: 8px;
+    border:none;
+    background-color: #ed1f34;
+    color:white;
+    cursor: pointer;
+}
+
+
+
+
+@media only screen and (max-width: 768px) {
+    
+    nav {
+        position: relative; /* Artık sabit değil */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        display: block;
+        z-index: 10;
+    }
+
+    nav > ul {
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0;
+    }
+
+    nav ul li.name-li {
+        font-size: 24px;
+        margin: 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    nav > ul li:not(.name-li) {
+        width: auto;
+        font-size: 12pt;
+        padding: 8px;
+    }
+
+
+    .info-wrapper {
+        margin-left: 0;
+        padding-top: 1em; /* navbar ile mesafeyi azalt */
+        height: auto;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .info-div {
+        width: 85%;
+        height: auto;
+    }
+    .info-div p{
+        font-size: 12pt;
+    }
+
+
+    /* ANKET OLUŞTURMA FORMU START */
+    .form-wrapper{
+        max-width: 100%;
+        padding: 40px 20px;
+        margin: 0 auto;
+    }
+    .olustur-form input,textarea{
+        width: 90%;
+    }
+    /* ANKET OLUŞTURMA FORMU END */
+
+
+    /*Anketlerim ekranı*/
+    .myankets{
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+}

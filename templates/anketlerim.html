@@ -1,0 +1,38 @@
+{% extends "dashboard.html" %}
+
+
+
+{%block content%}
+
+<div class="info-wrapper">
+    <div class="myankets">
+        {%if anketlerim%}
+            {% for anket in anketlerim %}
+            <form action="">
+                <div class="myanket">
+                    <input type="hidden" value="{{anket[id]}}">
+                    {% if anket['picture'] %}
+                        <img src="{{ url_for('static', filename='anketImages/' + anket['picture']) }}" width="150px">
+                    {%endif%}
+                    <h2>{{anket['title']}}</h2>
+                    {%if anket['is_private'] == 1 %}
+                        <label>Yayın Tipi = Link ile erişim</label>
+                    {%else%}
+                        <label>Yayın Tipi = Herkese açık</label>
+                    {%endif%}
+                    <p>{{anket['description']}}</p>
+                    <input type="submit" value="Anketi Kaldır">
+                </div>
+            </form>
+            {% endfor %}
+        {%else%}
+            <p>Henüz bir anket oluşturmadınız</p>
+        {%endif%}
+        
+    </div>
+    
+</div>
+
+<br><br><br><br>
+{% endblock %}
+

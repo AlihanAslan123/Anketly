@@ -1,0 +1,3 @@
+from utils import get_db_engine
+
+get_db_engine()

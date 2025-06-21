@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{%block content%}
+<div class="anket-screen-div">
+    {% if anket['picture'] %}
+        <img src="{{ url_for('static', filename='anketImages/' + anket['picture']) }}" style="max-width: 150px;">
+    {% endif %}
+    <h1>{{ anket['title'] }}</h1>
+    <p>{{ anket['description'] }}</p>
+
+    <form method="POST" action="{{ url_for('process.submit_anket') }}">
+        <input type="hidden" name="anket-id" value="{{ anket['id'] }}">
+        {% if cozulmusmu %}
+        <div>
+            Bu anketi çözdünüz
+        </div>
+        {% else %}
+            {% for soru in sorular %}
+                <div>
+                    <label><strong>{{ soru['soru_numarasi'] }}. {{ soru['soru_text'] }}</strong></label><br>
+
+                    {% if soru['cevap_tipi'] == 'Şıklar' %}
+                        {% for secenek in soru['secenekler'] %}
+                            <input type="radio" name="soru_{{ soru['id'] }}" value="{{ secenek['id'] }}">
+                            <span class="secenek-text">{{ secenek['secenek_text'] }}</span><br>
+                        {% endfor %}
+                    {% elif soru['cevap_tipi'] == 'Metin' %}
+                        <input type="text" name="soru_{{ soru['id'] }}" required><br>
+                    {% endif %}
+                </div>
+            {% endfor %}
+
+            <button type="submit">GÖNDER</button>
+        {%endif%}
+    </form>
+
+</div>
+{%endblock%}

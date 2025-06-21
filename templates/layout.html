@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anketly</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+
+</head>
+<body style="overflow-x: hidden;">
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <script>alert("{{ message }}");</script>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    
+    <button id="open-sidebar-button" onclick="openSidebar()">
+        <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="M165.13-254.62q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.86q7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.87q-7.22 7.12-17.9 7.12H165.13Zm0-200.25q-10.68 0-17.9-7.27-7.23-7.26-7.23-17.99 0-10.74 7.23-17.87 7.22-7.13 17.9-7.13h629.74q10.68 0 17.9 7.27 7.23 7.26 7.23 17.99 0 10.74-7.23 17.87-7.22 7.13-17.9 7.13H165.13Zm0-200.26q-10.68 0-17.9-7.26-7.23-7.26-7.23-18t7.23-17.87q7.22-7.12 17.9-7.12h629.74q10.68 0 17.9 7.26 7.23 7.26 7.23 18t-7.23 17.86q-7.22 7.13-17.9 7.13H165.13Z"/></svg>
+    </button>
+
+    <nav id="navbar">
+        <button id="close-sidebar-button" onclick="closeSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#c9c9c9"><path d="m480-444.62-209.69 209.7q-7.23 7.23-17.5 7.42-10.27.19-17.89-7.42-7.61-7.62-7.61-17.7 0-10.07 7.61-17.69L444.62-480l-209.7-209.69q-7.23-7.23-7.42-17.5-.19-10.27 7.42-17.89 7.62-7.61 17.7-7.61 10.07 0 17.69 7.61L480-515.38l209.69-209.7q7.23-7.23 17.5-7.42 10.27-.19 17.89 7.42 7.61 7.62 7.61 17.7 0 10.07-7.61 17.69L515.38-480l209.7 209.69q7.23 7.23 7.42 17.5.19 10.27-7.42 17.89-7.62 7.61-17.7 7.61-10.07 0-17.69-7.61L480-444.62Z"/></svg>
+        </button>
+        <ul>
+            <li class="name-li"><a style="font-family: 'Lobster Two' , sans-serif !important;" href="{{ url_for('home_page') }}">Anketly</a></li>
+            <li><a href="{{ url_for('home_page') }}">Anasayfa</a></li>
+            <li class="dropdown">
+                <a id="idKategori" style="cursor:pointer;" onclick="kategori_listele()"><img id="ImgOK" src="{{ url_for('static', filename='images/down.png') }}" width="15px"> Kategoriler</a>
+                <ul class="dropdown-menu">
+                    <li><a href="{{ url_for('get_by_category' , kategori='teknoloji') }}">Teknoloji</a></li>
+                    <li><a href="{{ url_for('get_by_category' , kategori='saglik') }}">Sağlık</a></li>
+                    <li><a href="{{ url_for('get_by_category' , kategori='otomotiv') }}">Otomotiv</a></li>
+                    <li><a href="{{ url_for('get_by_category' , kategori='egitim') }}">Eğitim</a></li>
+                    <li><a href="{{ url_for('get_by_category' , kategori='sanat') }}">Sanat</a></li>
+                    <li><a href="{{ url_for('get_by_category' , kategori='spor') }}">Spor</a></li>
+                </ul>
+            </li>
+            <li><a href="{{ url_for('home_page') }}">Tüm Anketler</a></li>
+            {% if current_user.is_authenticated %}
+                <li><a href="{{ url_for('account.get_dashboard') }}">Hesabım</a></li>
+                <li><a href="{{ url_for('account.logout') }}">Çıkış Yap</a></li>
+            {%else%}
+                <li><a href="{{ url_for('account.get_login') }}">Giriş Yap / Kayıt Ol</a></li>
+            {% endif %}
+            
+        </ul>
+    </nav>
+
+
+    {%block content%}
+
+    {%endblock%}
+
+
+    
+    <footer>
+        <p>&copy; 2025 Tüm Hakları Saklıdır. Anketly</p><br>
+        <p>İletişim: info@sirket.com | Telefon: +90 123 456 7890</p>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/untitled.js') }}"></script>
+</body>
+</html>

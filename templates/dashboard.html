@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anketly</title>
+
+    <link rel="stylesheet" href="{{ url_for('static',filename='dashboard.css') }}">
+
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Electrolize&family=Lobster+Two:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+
+</head>
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                    <button class="close-btn" onclick="this.parentElement.style.display='none';" aria-label="Close">&times;</button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    
+    <nav id="navbar">
+    
+        <ul>
+            <li class="name-li"><a style="font-family: 'Lobster Two' , sans-serif !important;" href="{{ url_for('home_page') }}">Anketly Dashboard</a></li>
+            <li><a href="{{ url_for('home_page') }}">Anasayfa</a></li>
+            <li><a href="{{ url_for('account.get_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('process.get_myAnkets') }}">Anketlerim</a></li>
+            <li><a href="{{ url_for('account.create_anket') }}">Anket Oluştur</a></li>
+        </ul>
+    </nav>
+
+    {%block content%}
+    <div class="info-wrapper">
+        <div class="info-div">
+            <p>Toplam Oluşturduğum Anket Sayısı</p>
+            <p class="sayi">{{ olusturulmus_anket_sayisi }}</p>
+        </div>
+        <div class="info-div">
+            <p>Katıldığım Toplam Anket Sayısı</p>
+            <p class="sayi">{{ cozulen_anket_sayisi }}</p>
+        </div>
+    </div>
+    <br><br><br><br>
+    {%endblock%}
+
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+    
+</body>
+</html>

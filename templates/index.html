@@ -1,0 +1,113 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+
+
+<!--SLİDE SHOW START-->
+<div class="slideshow-container">
+
+    <div class="mySlides fade">
+      <img src="{{ url_for('static', filename='images/photo1.jpg') }}">
+      <div class="slider-text">Topluluğunuzun fikirlerini almak, görüşlerini öğrenmek ve etkileşimi artırmak hiç bu kadar kolay olmamıştı! Sitemiz sayesinde dakikalar içinde kendi anketinizi oluşturabilir ve bunu topluluğunuzla paylaşabilirsiniz.</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <img src="{{ url_for('static', filename='images/photo2.png') }}">
+      <div class="slider-text">Anketleriniz tamamlandığında, sonuçları hem rapor hem de görsel grafikler eşliğinde keyifle inceleyebilirsiniz.</div>
+    </div>
+  
+    <div class="mySlides fade">
+      <img src="{{ url_for('static', filename='images/xxz.png') }}">
+      <div class="slider-text">Kullanıcı dostu arayüz ve güvenli veri saklama sayesinde hem siz hem katılımcılar gönül rahatlığıyla kullanabilir.</div>
+    </div>
+  
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div><br>
+<!--SLİDE SHOW END-->
+
+  
+
+
+
+<div class="container">
+    <img id="container-img" src="{{ url_for('static', filename='images/images.jpg') }}" width="515px">
+    <p class="text">Her fikir değerlidir ! Anketler, topluluğunuzun sesine kulak vermenin ve gerçekten ne düşündüklerini öğrenmenin en güçlü yoludur. Doğru verilere sahip olmak, daha etkili kararlar almanızı ve topluluğunuzla aranızda güçlü bir bağ kurmanızı sağlar. Şimdi harekete geçin, fikirleri bir araya getirin ve birlikte büyüyün!</p>
+</div>
+
+
+<div class="tanitim">
+  <p>Sitemizde anketlerinizi hızlı ve pratik bir şekilde hazırlayıp paylaşabilir, aynı zamanda ilginizi çeken anketlere katılarak fikirlerinizi ifade edebilirsiniz. Bu sayede hem topluluğunuzun görüşlerini öğrenir, hem de katılımcı olarak farklı konularda düşüncelerinizi paylaşmanın keyfini yaşarsınız.</p>
+  <button><a href="" style="text-decoration: none; color:white;">Anket Oluştur</a></button>
+</div>
+
+ 
+
+<!--CARDS START-->
+<div class="cards">
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/sports.jpg') }}">
+    <div class="card-body">
+      <h4><b>Spor Branş Anketi</b></h4>
+      <p>Hangi tip insanların hangi sporları yapmaktan hoşlandığı konusunda bir anket.</p>
+      <button>Anketi Çöz</button>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/tech.jpg') }}">
+    <div class="card-body">
+      <h4><b>Teknoloji kullanımı ve sosyal medya alışkanlıkları</b></h4>
+      <p>Teknoloji hayatımızın vazgeçilmez bir parçası haline geldi. Bu anketle, bireylerin hangi platformları ne sıklıkla kullandıklarını ve teknolojiye olan yaklaşımlarını ölçmeyi hedefliyoruz.</p>
+      <button>Anketi Çöz</button>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/ai.jpg') }}">
+    <div class="card-body">
+      <h4><b>Yapay zeka hakkındaki düşünceler</b></h4>
+      <p>Bu anket, bireylerin yapay zeka teknolojileri hakkında ne düşündüklerini ve beklentilerini ölçmeyi hedefliyor.</p>
+      <button>Anketi Çöz</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/cevre.jpg') }}">
+    <div class="card-body">
+      <h4><b>Sürdürülebilir yaşam ve çevre bilinci</b></h4>
+      <p>Bu anket, bireylerin sürdürülebilir yaşam alışkanlıklarını ve çevre bilincini ölçmeyi hedeflemektedir.</p>
+      <button>Anketi Çöz</button>
+    </div>
+  </div>
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/music.jpg') }}">
+    <div class="card-body">
+      <h4><b>Müzik zevkleri ve dinleme alışkanlıkları</b></h4>
+      <p>Bu anket, insanların hangi tür müzikleri dinlediklerini ve müzikle olan bağlarını keşfetmeyi hedefliyor.</p>
+      <button>Anketi Çöz</button>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <img src="{{ url_for('static', filename='images/seyehat.jpg') }}">
+    <div class="card-body">
+      <h4><b>Yurt içi mi, yurt dışı mı? Tatil tercihi</b></h4>
+      <p>Bu anket, bireylerin yurt içi ve yurt dışı seyahat tercihlerine ışık tutmayı amaçlıyor.</p>
+      <button>Anketi Çöz</button>
+    </div>
+  </div>
+
+</div>
+<!--CARDS END-->
+
+
+<br><br>
+
+{% endblock %}

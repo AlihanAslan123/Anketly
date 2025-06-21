@@ -1,0 +1,43 @@
+{% extends "dashboard.html" %}
+
+
+
+{%block content%}
+    
+<div class="form-wrapper">
+    <form action="{{ url_for('process.post_anket') }}" class="olustur-form" id="anketFormu" method="post" enctype="multipart/form-data">
+        <label>Anket adı</label>
+        <input name="anket-adi" type="text">
+        <label>Anket açıklaması</label>
+        <textarea style="resize: none;" name="description" rows="5" cols="40"></textarea>
+        <label>Kategorisi</label>
+        <select name="kategori">
+            <option>Seçiniz</option>
+            {% for row in kategoriler_dizisi %}
+                <option value="{{row[0]}}">{{row[1]}}</option>
+            {% endfor %}
+        </select>
+        <label>Anket resimi (Opsiyonel)</label>
+        <input type="file" name="image" accept="image/">
+        <label>Yayınlanma Şekli</label>
+        <select name="sekil">
+            <option>Seçiniz</option>
+            <option value="private">Sadece Link ile katılım</option>
+            <option value="public">Herkese açık</option>
+        </select>
+        <br><br>
+
+        <div id="soru-wrapper">
+            <!-- İlk soru buraya ekleniyor -->
+        </div>
+
+        <button name="btnAddSoru" type="button" onclick="yeniSoruEkle()">➕ Diğer Soruyu Ekle</button>
+
+
+        <button name="btnAnket" type="submit">Anket Oluştur</button>
+
+    </form>
+</div>
+<br><br><br><br>
+{% endblock %}
+
