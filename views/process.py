@@ -230,13 +230,6 @@ def submit_anket():
         
     
 
-'''
-[
-(2, 'Kuş Türü karşılaştırması', 'background_ornek_4.jpg', 'kuş türlerini karşılaştıran anket'), 
-(3, 'Maaş memnuniyet', '', 'maaş memnuniyetini ölçen anket'),
-(4, 'Öğrenci Memnuniyet Anketi', '', 'Öğrencilerin memnuniyetini ölçen anket')
-]
-'''
 
 
 @process.route('/myAnkets')
