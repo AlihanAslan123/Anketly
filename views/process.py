@@ -238,3 +238,15 @@ def get_myAnkets():
         result = conn.execute(text('SELECT * from tbl_anket where kullanici_id= :kullanici_id;'),{'kullanici_id':current_user.id}).fetchall()
         
     return render_template('anketlerim.html',anketlerim=result)
+
+
+@process.route('/myAnkets/remove',methods=['POST'])
+@login_required
+def remove_myanket():
+    id = int(request.form.get('myanket_id'))
+    with engine.begin() as conn:
+        result = conn.execute(text('delete from tbl_anket where kullanici_id = :kullanici_id and id = :id'),
+        {'kullanici_id':current_user.id, 'id':id})
+    if result.rowcount != 0:
+        flash('Başarı ile silindi')
+        return redirect(url_for('process.get_myAnkets'))

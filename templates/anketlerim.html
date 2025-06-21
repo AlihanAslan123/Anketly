@@ -8,9 +8,9 @@
     <div class="myankets">
         {%if anketlerim%}
             {% for anket in anketlerim %}
-            <form action="">
+            <form action="{{ url_for('process.remove_myanket') }}" method="POST">
                 <div class="myanket">
-                    <input type="hidden" value="{{anket[id]}}">
+                    <input name="myanket_id" type="hidden" value="{{ anket.id }}">
                     {% if anket['picture'] %}
                         <img src="{{ url_for('static', filename='anketImages/' + anket['picture']) }}" width="150px">
                     {%endif%}
