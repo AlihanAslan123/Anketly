@@ -235,7 +235,19 @@ def submit_anket():
 @process.route('/myAnkets')
 def get_myAnkets():
     with engine.begin() as conn:
-        result = conn.execute(text('SELECT * from tbl_anket where kullanici_id= :kullanici_id;'),{'kullanici_id':current_user.id}).fetchall()
+        query = text('''
+        SELECT 
+            a.id,
+            a.title,
+            a.picture,
+            a.description,
+            a.is_private,
+            pa.anket_link
+        FROM tbl_anket a
+        LEFT JOIN private_anket pa ON a.id = pa.anket_id
+        where a.kullanici_id= :kullanici_id;
+        ''')
+        result = conn.execute(query,{'kullanici_id':current_user.id}).fetchall()
         
     return render_template('anketlerim.html',anketlerim=result)
 
