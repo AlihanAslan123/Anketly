@@ -45,7 +45,7 @@
                     <li><a href="{{ url_for('get_by_category' , kategori='spor') }}">Spor</a></li>
                 </ul>
             </li>
-            <li><a href="{{ url_for('home_page') }}">Tüm Anketler</a></li>
+            <li><a href="{{ url_for('get_anketler') }}">Tüm Anketler</a></li>
             {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('account.get_dashboard') }}">Hesabım</a></li>
                 <li><a href="{{ url_for('account.logout') }}">Çıkış Yap</a></li>

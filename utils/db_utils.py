@@ -211,4 +211,7 @@ def sum_anket():
         
     
     
-    
+def get_all_anket():
+    with engine.begin() as conn:
+        result = conn.execute(text('SELECT * FROM tbl_anket where is_private = 0')).fetchall()
+    return result
