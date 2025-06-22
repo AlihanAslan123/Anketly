@@ -6,35 +6,39 @@
 
 <div class="info-wrapper">
     <div class="myankets">
-        {%if anketlerim%}
+        {% if anketlerim %}
             {% for anket in anketlerim %}
             <form action="{{ url_for('process.remove_myanket') }}" method="POST">
                 <div class="myanket">
                     <input name="myanket_id" type="hidden" value="{{ anket.id }}">
                     {% if anket['picture'] %}
                         <img src="{{ url_for('static', filename='anketImages/' + anket['picture']) }}" width="150px">
-                    {%endif%}
-                    <h2>{{anket['title']}}</h2>
-                    {%if anket['is_private'] == 1 %}
+                    {% endif %}
+                    <h2>{{ anket['title'] }}</h2>
+                    {% if anket['is_private'] == 1 %}
                         <label>Yayın Tipi = Link ile erişim</label>
-                    {%else%}
+                    {% else %}
                         <label>Yayın Tipi = Herkese açık</label>
-                    {%endif%}
-                    <p>{{anket['description']}}</p>
+                    {% endif %}
+                    <p>{{ anket['description'] }}</p>
                     <input type="submit" value="Anketi Kaldır">
-                    {%if anket['is_private'] == 1 %}
-                        <button>Link Al</button>
-                    {%endif%}
+
+                    {% if anket['is_private'] == 1 %}
+                        <!-- Benzersiz ID'li input -->
+                        <input type="text" id="anketLink{{ loop.index }}" value="http://localhost:5000/anketCoz/{{ anket['anket_link'] }}" style="position:absolute; left:-9999px;">
+                        <!-- Butona özel onclick -->
+                        <br><br>
+                        <button style="cursor:pointer; color:white;width: 140px; padding:5px; border-radius:10px; background-color:rgba(51, 138, 245, 0.979)" type="button" onclick="kopyala('anketLink{{ loop.index }}')">Linki Kopyala</button>
+                    {% endif %}
                 </div>
             </form>
             {% endfor %}
-        {%else%}
+        {% else %}
             <p>Henüz bir anket oluşturmadınız</p>
-        {%endif%}
-        
+        {% endif %}
     </div>
-    
 </div>
+
 
 <br><br><br><br>
 {% endblock %}

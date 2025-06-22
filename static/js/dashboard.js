@@ -120,3 +120,25 @@ function sorulariNumaralandir() {
 }
 
 window.onload = yeniSoruEkle;
+
+
+
+function kopyala(id) {
+    const linkInput = document.getElementById(id);
+    linkInput.select();
+    linkInput.setSelectionRange(0, 99999); // Mobil destek
+
+    try {
+        const basarili = document.execCommand("copy");
+        if (basarili) {
+            alert("Link panoya kopyalandı!");
+        } else {
+            alert("Kopyalama başarısız oldu.");
+        }
+    } catch (err) {
+        alert("Tarayıcınız kopyalama işlemini desteklemiyor.");
+    }
+}
+
+
+
