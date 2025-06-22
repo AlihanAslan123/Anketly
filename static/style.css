@@ -608,7 +608,7 @@ footer{
 
     .slideshow-container {
         position: relative;
-        max-width: 400px; /* Bunu ihtiyacına göre 600-1000px arası yapabilirsin */
+        max-width: 300px; /* Bunu ihtiyacına göre 600-1000px arası yapabilirsin */
         margin: 40px auto;
         overflow: hidden;
         border-radius: 10px;
@@ -642,11 +642,11 @@ footer{
         
     }
     .container img{
-        max-width: 430px;
+        max-width: 250px;
     }
     .container .text{
         margin-top: 2em;
-        max-width: 330px;
+        max-width: 230px;
         font-size:16px;
     }
 

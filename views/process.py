@@ -234,6 +234,9 @@ def submit_anket():
 
 @process.route('/myAnkets')
 def get_myAnkets():
+    '''
+        anketlerim butonuna basınca oluşturduğum anketleri getirir.
+    '''
     with engine.begin() as conn:
         query = text('''
         SELECT 
